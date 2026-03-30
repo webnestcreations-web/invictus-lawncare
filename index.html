@@ -1,0 +1,857 @@
+<!--
+  ============================================================
+  INVICTUS LAWNCARE SERVICES - WEBSITE
+  ============================================================
+  
+  IMAGE SETUP - Add your photos to the images/ folder:
+  
+  REQUIRED:
+    images/logo.png          ✅ Already included
+  
+  RECOMMENDED (add these for a complete site):
+    images/hero-bg.png       → Wide landscape/lawn photo for hero background
+                               (use a beautiful lawn shot, ideally 1920x1080+)
+    images/about.jpg         → Crew photo, before/after, or completed lawn
+                               (replace the logo placeholder in the About section)
+    
+  OPTIONAL (for future gallery/portfolio):
+    images/work-1.jpg        → Customer lawn photos
+    images/work-2.jpg        → Before/after shots
+    images/work-3.jpg        → etc.
+  
+  TO ADD HERO BACKGROUND:
+    1. Put your photo in images/hero-bg.png
+    2. Find the hero section below
+    3. Uncomment the <img> tag inside .hero-bg
+  
+  TO ADD ABOUT PHOTO:
+    1. Put your photo in images/about.jpg  
+    2. Find the about section below
+    3. Replace the logo placeholder div with:
+       <img src="images/about.jpg" alt="Invictus Lawncare Services">
+  
+  DEPLOYMENT TO CLOUDFLARE PAGES:
+    1. Go to Cloudflare Dashboard → Pages → Create project → Direct Upload
+    2. Drag this entire folder (index.html + images/) into the upload
+    3. Click Deploy
+    4. Connect your custom domain in project settings
+  
+  DEPLOYMENT TO GITHUB PAGES:
+    1. Create new repo on github.com
+    2. Upload ALL files (index.html + images/ folder)
+    3. Settings → Pages → Source: main branch
+    4. Wait 60 seconds → site is live
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google Analytics: Replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invictus Lawncare Services | Professional Lawn Care in Rockmart, GA</title>
+<meta name="description" content="Professional lawn maintenance, mowing, landscaping & more in Rockmart, GA. Free estimates. Call (678) 458-4753.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Invictus Lawncare Services | Rockmart, GA">
+<meta property="og:description" content="Professional lawn maintenance, mowing, landscaping and more. Free estimates. Serving Rockmart, GA.">
+<meta property="og:image" content="images/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="">
+<link rel="icon" type="image/jpeg" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#D4A821;--gold-light:#E8C54A;--gold-dark:#B08D1A;
+  --green-dark:#1A3A1A;--green-mid:#2D5A2D;--green-accent:#3CB043;
+  --charcoal:#1C1C1C;--warm-white:#FAF8F0;--off-white:#F5F2E8;
+  --text-dark:#1A1A1A;--text-mid:#4A4A4A;--text-light:#7A7A7A;
+  --radius:12px;--radius-lg:20px;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.08);
+  --shadow-md:0 4px 20px rgba(0,0,0,.12);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.16);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--warm-white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif}
+img{max-width:100%;height:auto}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(26,58,26,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 1.5rem}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:48px;width:auto;border-radius:0}
+
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--green-dark);padding:10px 22px;border-radius:50px;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 4px 15px rgba(212,168,33,.4)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.nav-fb{color:rgba(255,255,255,.7);transition:color .3s;display:flex;align-items:center}
+.nav-fb:hover{color:#1877F2}
+.nav-fb svg{width:22px;height:22px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;width:100%;background:rgba(26,58,26,.98);backdrop-filter:blur(12px);padding:1.5rem 2rem;flex-direction:column;gap:1.25rem;z-index:999;border-top:1px solid rgba(255,255,255,.1)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;text-decoration:none;font-size:1.05rem;font-weight:500;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-menu a:last-child{border-bottom:none}
+
+/* ===== HERO ===== */
+.hero{min-height:auto;background:var(--green-dark);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+/* Replace this with a real lawn photo: images/hero-bg.png */
+.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(26,58,26,.94) 0%,rgba(13,38,13,.88) 50%,rgba(6,18,6,.92) 100%);z-index:1}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.35}
+.hero-pattern{position:absolute;inset:0;z-index:2;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23fff' fill-opacity='.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-glow{position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,33,.12) 0%,transparent 70%);animation:pulse 6s ease-in-out infinite;z-index:2}
+.hero-glow-2{position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(60,176,67,.08) 0%,transparent 70%);animation:pulse 8s ease-in-out infinite reverse;z-index:2}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.1);opacity:1}}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 1.5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,33,.12);border:1px solid rgba(212,168,33,.25);padding:6px 14px;border-radius:50px;margin-bottom:1.25rem;font-size:.75rem;font-weight:600;color:var(--gold-light);letter-spacing:.5px;text-transform:uppercase}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green-accent);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:1.75rem;max-width:480px}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--green-dark);padding:13px 28px;border-radius:50px;border:none;font-weight:700;font-size:.9rem;cursor:pointer;letter-spacing:.3px;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,168,33,.35)}
+.btn-secondary{background:transparent;color:#fff;padding:13px 28px;border-radius:50px;border:2px solid rgba(255,255,255,.25);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,.05)}
+
+/* Quote Form */
+.hero-form-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:var(--radius-lg);padding:2rem;position:relative}
+.hero-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--green-accent));border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.form-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:.35rem}
+.form-subtitle{color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:1.25rem}
+.form-group{margin-bottom:.85rem}
+.form-group label{display:block;color:rgba(255,255,255,.75);font-size:.75rem;font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#fff;font-size:.9rem;font-family:'DM Sans',sans-serif;transition:all .3s;outline:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.3)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(212,168,33,.12)}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer}
+.form-group select option{background:var(--green-dark);color:#fff}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.form-submit{width:100%;padding:13px;border:none;border-radius:50px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--green-dark);font-weight:700;font-size:.95rem;cursor:pointer;letter-spacing:.3px;transition:all .3s;margin-top:.25rem;font-family:'DM Sans',sans-serif}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,168,33,.35)}
+.form-submit:active{transform:translateY(0)}
+.form-note{text-align:center;font-size:.8rem;color:rgba(255,255,255,.35);margin-top:.6rem}
+.form-success{display:none;text-align:center;padding:2rem 1rem}
+.form-success .checkmark{width:60px;height:60px;border-radius:50%;background:rgba(60,176,67,.15);border:2px solid var(--green-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem}
+.form-success h3{color:#fff;font-size:1.2rem;margin-bottom:.5rem}
+.form-success p{color:rgba(255,255,255,.6);font-size:.9rem}
+
+/* ===== STATS ===== */
+.stats-bar{background:var(--green-dark);padding:2.5rem 1.5rem;position:relative}
+.stats-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.stat-item h3{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;color:var(--gold);margin-bottom:.2rem}
+.stat-item p{color:rgba(255,255,255,.65);font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+
+/* ===== SECTIONS ===== */
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-eyebrow{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:.75rem;position:relative;padding:0 2rem}
+.section-eyebrow::before,.section-eyebrow::after{content:'';position:absolute;top:50%;width:24px;height:1px;background:var(--gold)}
+.section-eyebrow::before{left:0}
+.section-eyebrow::after{right:0}
+.section-header h2{font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;margin-bottom:.75rem}
+.section-header p{font-size:1rem;color:var(--text-mid);max-width:560px;margin:0 auto;line-height:1.7}
+
+/* ===== SERVICES ===== */
+.services{padding:5rem 1.5rem;background:var(--warm-white)}
+.services .section-eyebrow{color:var(--green-mid)}
+.services .section-header h2{color:var(--green-dark)}
+.services-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.service-card{background:#fff;border-radius:var(--radius-lg);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:all .4s;border:1px solid rgba(0,0,0,.04);cursor:default}
+.service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:linear-gradient(to bottom,var(--gold),var(--green-accent));transition:height .4s}
+.service-card:hover::before{height:100%}
+.service-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(26,58,26,.06),rgba(212,168,33,.08));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
+.service-card h3{font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-bottom:.4rem}
+.service-card p{color:var(--text-mid);font-size:.85rem;line-height:1.65}
+
+/* ===== ABOUT ===== */
+.about{padding:5rem 1.5rem;background:var(--green-dark);position:relative;overflow:hidden}
+.about::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right,rgba(212,168,33,.04) 0%,transparent 70%)}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;position:relative;z-index:1}
+.about-img-wrap{position:relative}
+.about-img-wrap img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+.about-img-wrap::after{content:'';position:absolute;top:16px;left:16px;right:-16px;bottom:-16px;border:2px solid rgba(212,168,33,.2);border-radius:var(--radius-lg);z-index:-1}
+.about-content .section-eyebrow{color:var(--gold)}
+.about-content h2{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:.75rem;margin-top:.5rem}
+.about-content>p{color:rgba(255,255,255,.7);font-size:.95rem;line-height:1.75;margin-bottom:1.25rem}
+.about-features{display:flex;flex-direction:column;gap:.75rem;margin-top:.75rem}
+.about-feature{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);font-weight:500;font-size:.9rem}
+.about-feature .check{width:26px;height:26px;border-radius:50%;background:rgba(212,168,33,.12);border:1px solid rgba(212,168,33,.25);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;flex-shrink:0}
+
+/* ===== REVIEWS ===== */
+.reviews{padding:5rem 1.5rem;background:var(--off-white)}
+.reviews .section-eyebrow{color:var(--green-mid)}
+.reviews .section-header h2{color:var(--green-dark)}
+.reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.review-card{background:#fff;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid rgba(0,0,0,.04);transition:all .3s;display:flex;flex-direction:column}
+.review-card:hover{box-shadow:var(--shadow-md)}
+.review-stars{color:var(--gold);font-size:1rem;margin-bottom:.75rem;letter-spacing:2px}
+.review-text{color:var(--text-mid);font-size:.9rem;line-height:1.7;margin-bottom:1rem;font-style:italic;flex:1}
+.review-author{display:flex;align-items:center;gap:.75rem}
+.review-author-info .name{font-weight:700;color:var(--green-dark);font-size:.85rem}
+.review-author-info .source{color:var(--text-light);font-size:.75rem}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem;flex-shrink:0}
+
+
+/* ===== GALLERY ===== */
+.gallery{padding:5rem 1.5rem;background:var(--warm-white)}
+.gallery .section-eyebrow{color:var(--green-mid)}
+.gallery .section-header h2{color:var(--green-dark)}
+.gallery-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:1rem}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;height:100%;background:var(--off-white)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .gallery-label{position:absolute;bottom:0;left:0;right:0;padding:.75rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:.8rem;font-weight:600}
+.gallery-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:var(--text-light);font-size:.85rem;border:2px dashed rgba(0,0,0,.1);border-radius:var(--radius);aspect-ratio:4/3}
+.gallery-placeholder svg{width:32px;height:32px;opacity:.3}
+
+/* ===== PROMO ===== */
+.promo{padding:3.5rem 1.5rem;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));text-align:center;position:relative;overflow:hidden}
+.promo::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.06'%3E%3Cpath d='M20 20l-5-5h10l-5 5z'/%3E%3C/g%3E%3C/svg%3E")}
+.promo-inner{position:relative;z-index:1;max-width:650px;margin:0 auto}
+.promo h2{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--green-dark);margin-bottom:.6rem}
+.promo p{color:rgba(26,58,26,.75);font-size:1rem;margin-bottom:1.5rem}
+.btn-dark{background:var(--green-dark);color:#fff;padding:13px 32px;border-radius:50px;border:none;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.25)}
+
+/* ===== CONTACT ===== */
+.contact{padding:5rem 1.5rem;background:var(--warm-white)}
+.contact .section-eyebrow{color:var(--green-mid)}
+.contact .section-header h2{color:var(--green-dark)}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-card{display:flex;gap:.75rem;align-items:flex-start}
+.contact-card .icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-card .icon svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-card h4{font-family:'DM Sans',sans-serif;font-weight:700;color:var(--green-dark);margin-bottom:3px;font-size:.9rem}
+.contact-card p{color:var(--text-mid);font-size:.85rem;line-height:1.5}
+.contact-card a{color:var(--green-mid);text-decoration:none;font-weight:600}
+.contact-card a:hover{color:var(--gold-dark)}
+.map-wrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);height:100%;min-height:320px}
+.map-wrap iframe{width:100%;height:100%;border:0}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--charcoal);padding:2.5rem 1.5rem;text-align:center}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1.25rem}
+.footer-logo img{height:44px;width:auto;border-radius:0}
+
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.82rem;transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-social{display:flex;justify-content:center;gap:1rem;margin-bottom:1.25rem}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.footer-social a:hover{background:var(--gold);transform:translateY(-2px)}
+.footer-social svg{width:18px;height:18px;fill:#fff}
+.footer-divider{width:50px;height:1px;background:var(--gold);margin:1.25rem auto;opacity:.3}
+.footer-credit{color:rgba(255,255,255,.35);font-size:.75rem}
+.footer-credit a{color:#3fc0be;text-decoration:none}
+
+/* ===== ADMIN FAB ===== */
+.fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border:none;color:var(--green-dark);font-size:1.4rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(212,168,33,.4);transition:all .3s;display:flex;align-items:center;justify-content:center}
+.fab:hover{transform:scale(1.1) rotate(90deg)}
+
+/* ===== MODAL ===== */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:var(--radius-lg);padding:2rem;max-width:460px;width:100%;box-shadow:var(--shadow-lg);position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:.75rem;right:.75rem;background:none;border:none;font-size:1.3rem;color:var(--text-light);cursor:pointer;transition:color .3s;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.modal-close:hover{color:var(--text-dark);background:var(--off-white)}
+.modal h3{font-size:1.3rem;color:var(--green-dark);margin-bottom:.35rem}
+.modal>p{color:var(--text-mid);font-size:.85rem;margin-bottom:1.25rem}
+.modal .form-group label{color:var(--text-mid)}
+.modal .form-group input,.modal .form-group select,.modal .form-group textarea{background:var(--off-white);border:1px solid rgba(0,0,0,.08);color:var(--text-dark)}
+.modal .form-group input::placeholder,.modal .form-group textarea::placeholder{color:var(--text-light)}
+.modal .form-group input:focus,.modal .form-group select:focus,.modal .form-group textarea:focus{border-color:var(--green-mid);box-shadow:0 0 0 3px rgba(45,90,45,.08)}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-up{opacity:0;transform:translateY(25px);transition:all .6s cubic-bezier(.22,1,.36,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:968px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;gap:2rem}
+  .hero-sub{margin:0 auto 1.5rem}
+  .hero-actions{justify-content:center}
+  .hero-form-card{max-width:480px;margin:0 auto}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .about-inner{grid-template-columns:1fr}
+  .about-img-wrap{order:-1}
+  .about-content{text-align:center}
+  .about-features{align-items:center}
+  .contact-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-right{display:none}
+    .hamburger{display:flex}
+}
+@media(max-width:600px){
+  .form-row{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .stat-item h3{font-size:1.75rem}
+  .hero{padding-top:72px}
+  .services-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .nav-inner{height:60px}
+  .mobile-menu{top:60px}
+  .hero{padding-top:60px}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LawnService","name":"Invictus Lawncare Services LLC","description":"Professional lawn maintenance, mowing, landscaping and more. Serving Rockmart, GA and surrounding areas.","telephone":"(678) 458-4753","image":"images/logo.png","address":{"@type":"PostalAddress","addressLocality":"Rockmart","addressRegion":"GA","postalCode":"30153","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":"34.0","longitude":"-85.05"},"areaServed":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":"34.0","longitude":"-85.05"},"geoRadius":"30mi"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"sameAs":["https://www.facebook.com/profile.php?id=100094975286619"],"priceRange":"$$"}
+</script>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="images/logo.png" alt="Invictus Lawncare Services Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right desktop">
+      <a href="https://www.facebook.com/profile.php?id=100094975286619" target="_blank" rel="noopener" aria-label="Facebook" class="nav-fb">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="tel:6784584753" class="nav-cta">Call Now</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" class="mobile-link">Home</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#reviews" class="mobile-link">Reviews</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="https://www.facebook.com/profile.php?id=100094975286619" target="_blank" rel="noopener">Facebook</a>
+  <a href="tel:6784584753" style="color:var(--gold);font-weight:700;">Call (678) 458-4753</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <!--
+      TO ADD A HERO BACKGROUND IMAGE:
+      Place a wide lawn/landscape photo in images/hero-bg.png
+      Then uncomment the line below:
+    -->
+    <img src="images/hero-bg.png" alt="" loading="eager">
+  </div>
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="dot"></span> Now Booking — Free Estimates
+      </div>
+      <h1>Rockmart's Most <em>Trusted</em> Lawn Care Professionals</h1>
+      <p class="hero-sub">Professional lawn maintenance, mowing, landscaping and more. Serving Rockmart, GA and surrounding areas with precision and pride.</p>
+      <div class="hero-actions">
+        <a href="tel:6784584753" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (678) 458-4753
+        </a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+    </div>
+
+    <!-- ===== QUOTE REQUEST FORM ===== -->
+    <div class="hero-form-card">
+      <div id="formContent">
+        <div class="form-title">Get a Free Estimate</div>
+        <p class="form-subtitle">Quick form — we'll call you back ASAP.</p>
+        <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Phone Number</label>
+              <input type="tel" id="fphone" name="phone" placeholder="(678) 000-0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fservice">Service Needed</label>
+            <select id="fservice" name="service" required>
+              <option value="">Select a service...</option>
+              <option>Lawn Mowing & Maintenance</option>
+              <option>Landscaping</option>
+              <option>Yard Cleanup</option>
+              <option>Bush / Hedge Trimming</option>
+              <option>Mulch & Pine Straw</option>
+              <option>New Lawn Installation</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fdetails">Additional Details <span style="font-weight:400;opacity:.6">(optional)</span></label>
+            <textarea id="fdetails" name="details" rows="2" placeholder="Describe your project or property size..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Request Free Estimate</button>
+        </form>
+        <p class="form-note">No spam — we only call about your estimate.</p>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="checkmark">✓</div>
+        <h3>Request Received!</h3>
+        <p>We'll call you back shortly to discuss your project. Thank you!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up"><h3>100%</h3><p>Satisfaction Rate</p></div>
+    <div class="stat-item fade-up"><h3>24/7</h3><p>Availability</p></div>
+    <div class="stat-item fade-up"><h3>FREE</h3><p>Estimates Always</p></div>
+    <div class="stat-item fade-up"><h3>5 ★</h3><p>Google & Facebook</p></div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">What We Do</div>
+    <h2>Professional Lawn & Landscape Services</h2>
+    <p>From routine mowing to complete landscape transformations — we handle it all with precision and care.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">🌿</div>
+      <h3>Lawn Mowing</h3>
+      <p>Weekly or bi-weekly precision mowing with crisp edges and clean striping. Your lawn will be the envy of the neighborhood.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🌳</div>
+      <h3>Lawn Maintenance</h3>
+      <p>Complete care including cutting, trimming, edging, and blowing. We keep your property pristine year-round.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🏡</div>
+      <h3>Landscaping</h3>
+      <p>Custom landscape design and installation. From flower beds to hardscaping — we bring your vision to life.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🍂</div>
+      <h3>Yard Cleanup</h3>
+      <p>Seasonal cleanups to remove leaves, debris, and overgrowth. We get your yard looking its best fast.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">✂️</div>
+      <h3>Bush & Hedge Trimming</h3>
+      <p>Expert trimming and shaping of shrubs, hedges, and ornamental plants for a polished look.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🌱</div>
+      <h3>Mulch & Pine Straw</h3>
+      <p>Fresh mulch and pine straw to protect beds, suppress weeds, and give your landscape a finished look.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🌾</div>
+      <h3>New Lawn Installation</h3>
+      <p>Sod and seeding for a lush green lawn from scratch. We prep the soil and install for lasting results.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">💪</div>
+      <h3>No Job Too Big</h3>
+      <p>If it involves your yard, we can handle it. Call us for a free estimate on any outdoor project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery" id="gallery">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Our Work</div>
+    <h2>See the Invictus Difference</h2>
+    <p>Real results from real properties in the Rockmart area.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-up">
+      <img src="images/Invictus1.jpg" alt="Complete yard maintenance" loading="lazy">
+      <div class="gallery-label">Complete Yard Maintenance</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="images/Invictus3.jpg" alt="Full property care" loading="lazy">
+      <div class="gallery-label">Full Property Care</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="images/Invictus5.png" alt="Lush green results" loading="lazy">
+      <div class="gallery-label">Lush Green Results</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="images/Invictus6.png" alt="Residential lawn care" loading="lazy">
+      <div class="gallery-label">Residential Lawn Care</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="images/about.jpg" alt="Before and after lawn transformation" loading="lazy">
+      <div class="gallery-label">Before & After Transformation</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="images/hero-bg.png" alt="Fresh cut results" loading="lazy">
+      <div class="gallery-label">Fresh Cut Results</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-up">
+      <img src="images/about.jpg" alt="Invictus Lawncare Services - Professional Lawn Care" loading="lazy">
+    </div>
+    <div class="about-content fade-up">
+      <div class="section-eyebrow">About Invictus</div>
+      <h2>Unconquered Quality, Every Lawn</h2>
+      <p>Invictus means "unconquered" — and that's the standard we bring to every property we touch. Based in Rockmart, Georgia, Invictus Lawncare Services provides professional, affordable lawn care to homeowners and businesses across the area.</p>
+      <p>The difference between a good job and a great job is the small details. We don't overlook those details when keeping a yard looking good.</p>
+      <div class="about-features">
+        <div class="about-feature"><div class="check">✓</div> Licensed & Insured</div>
+        <div class="about-feature"><div class="check">✓</div> Free Estimates on Every Job</div>
+        <div class="about-feature"><div class="check">✓</div> Serving Rockmart & Surrounding Areas</div>
+        <div class="about-feature"><div class="check">✓</div> Weekly & Bi-Weekly Plans Available</div>
+        <div class="about-feature"><div class="check">✓</div> No Job Too Big or Too Small</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMO BANNER ===== -->
+<div class="promo">
+  <div class="promo-inner fade-up">
+    <h2>Spring Is Here — Book Your Cleanup Today!</h2>
+    <p>Every estimate is always free. Call now and let's get your yard looking its best.</p>
+    <a href="tel:6784584753" class="btn-dark">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call (678) 458-4753
+    </a>
+  </div>
+</div>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reviews" id="reviews">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2>What Our Clients Say</h2>
+    <p>Real reviews from real customers.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Invictus Lawncare Services LLC provided outstanding landscaping work. Their team was professional, detail oriented, and made sure everything looked perfect. The pricing was fair and well worth the quality of service."</p>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div class="review-author-info">
+          <div class="name">Donald W.</div>
+          <div class="source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"We recently randomly found his services and boy were we glad we did. He was very professional and very skilled. Quick response time as well. He did a walk around my area and eased all my concerns! He is our monthly go to for lawn care. I highly recommend him!"</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div class="review-author-info">
+          <div class="name">Saint A.</div>
+          <div class="source">Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Fantastic job!! We can see the care and time taken each time our lawn is done. Keith is reliable and affordable! I can't wait to see his business grow. He was recommended to us and no regrets!"</p>
+      <div class="review-author">
+        <div class="review-avatar">T</div>
+        <div class="review-author-info">
+          <div class="name">Tee D.</div>
+          <div class="source">Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Keith is the kind of person you can always count on. He shows up when he says he will, does a thorough job, and never cuts corners. He treats my yard like it's his own. The grass looks healthier, the edges are sharp, and neighbors have even complimented me. He's reliable, trustworthy, and always gives 110%."</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div class="review-author-info">
+          <div class="name">Shemekia F.</div>
+          <div class="source">Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Keith from Invictus Lawncare Service is outstanding. He's quick, efficient, and always kind. It's rare to find someone who combines great work with a great attitude, but Keith nails it every time. In my opinion, he's simply the best. Highly recommend!"</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div class="review-author-info">
+          <div class="name">Michelle</div>
+          <div class="source">Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Keith showed up promptly. He went over and beyond on our yard. It looked better than what our neighbors were paying all these crazy amounts for these big professional companies. We will keep using him on a weekly basis to maintain our yard. Thank Keith for making our yard look amazing!!"</p>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div class="review-author-info">
+          <div class="name">Deanna S.</div>
+          <div class="source">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2>Ready for a Better Lawn?</h2>
+    <p>Reach out today for your free, no-obligation estimate.</p>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-info fade-up">
+      <div class="contact-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Call Us</h4>
+          <p><a href="tel:6784584753">(678) 458-4753</a></p>
+          <p>Available 7 days a week</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Service Area</h4>
+          <p>Rockmart, GA 30153<br>& Surrounding Areas</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div>
+          <h4>Facebook</h4>
+          <p><a href="https://www.facebook.com/profile.php?id=100094975286619" target="_blank" rel="noopener">Invictus Lawncare Services</a></p>
+          <p>Message us anytime</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Open 24 Hours<br>We work around your schedule</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrap fade-up">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26443.85!2d-85.05!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888a12bef7f3e8d5%3A0x2f9d24cb1cf5efad!2sRockmart%2C%20GA%2030153!5e0!3m2!1sen!1sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Rockmart GA Map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="images/logo.png" alt="Invictus Lawncare Services">
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:6784584753">(678) 458-4753</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/profile.php?id=100094975286619" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <p class="footer-credit">Built by <a href="#">WebNest Creations</a></p>
+</footer>
+
+<!-- ===== ADMIN FAB ===== -->
+<button class="fab" id="fabBtn" title="Admin: Add Service">+</button>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h3>Add New Service</h3>
+    <p>Demo feature — add a new service card to the site.</p>
+    <div class="form-group">
+      <label>Service Name</label>
+      <input type="text" id="newServiceName" placeholder="e.g., Pressure Washing">
+    </div>
+    <div class="form-group">
+      <label>Emoji Icon</label>
+      <input type="text" id="newServiceIcon" placeholder="e.g., 💦" maxlength="4">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="newServiceDesc" rows="3" placeholder="Brief description of the service..."></textarea>
+    </div>
+    <button class="form-submit" id="addServiceBtn" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:#fff">Add Service</button>
+  </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(function(){
+  // --- Nav scroll effect ---
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // --- Mobile menu ---
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function(){
+    mobileMenu.classList.toggle('open');
+    var spans = hamburger.querySelectorAll('span');
+    if(mobileMenu.classList.contains('open')){
+      spans[0].style.transform='rotate(45deg) translate(5px,5px)';
+      spans[1].style.opacity='0';
+      spans[2].style.transform='rotate(-45deg) translate(5px,-5px)';
+    } else {
+      spans[0].style.transform=''; spans[1].style.opacity=''; spans[2].style.transform='';
+    }
+  });
+  // Close mobile menu on link click
+  var mobileLinks = mobileMenu.querySelectorAll('a');
+  for(var i=0;i<mobileLinks.length;i++){
+    mobileLinks[i].addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      var spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform=''; spans[1].style.opacity=''; spans[2].style.transform='';
+    });
+  }
+
+  // --- Smooth scroll for all anchor links ---
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        var offset = nav.offsetHeight + 10;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({top:top, behavior:'smooth'});
+      }
+    });
+  });
+
+  // --- Scroll animations ---
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+
+  // --- Quote form ---
+  var form = document.getElementById('quoteForm');
+  var formContent = document.getElementById('formContent');
+  var formSuccess = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    // In production: send this data to email/CRM via a backend or service like Formspree
+    formContent.querySelector('form').style.display='none';
+    formContent.querySelector('.form-title').style.display='none';
+    formContent.querySelector('.form-subtitle').style.display='none';
+    formContent.querySelector('.form-note').style.display='none';
+    formSuccess.style.display='block';
+  });
+
+  // --- Modal ---
+  var modal = document.getElementById('modal');
+  var fabBtn = document.getElementById('fabBtn');
+  var modalClose = document.getElementById('modalClose');
+  fabBtn.addEventListener('click', function(){ modal.classList.add('open'); });
+  modalClose.addEventListener('click', function(){ modal.classList.remove('open'); });
+  modal.addEventListener('click', function(e){ if(e.target===modal) modal.classList.remove('open'); });
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') modal.classList.remove('open'); });
+
+  // --- Add service (demo) ---
+  document.getElementById('addServiceBtn').addEventListener('click', function(){
+    var name = document.getElementById('newServiceName').value.trim();
+    var icon = document.getElementById('newServiceIcon').value.trim() || '⭐';
+    var desc = document.getElementById('newServiceDesc').value.trim();
+    if(!name) return;
+    var grid = document.querySelector('.services-grid');
+    var card = document.createElement('div');
+    card.className = 'service-card fade-up visible';
+    card.innerHTML = '<div class="service-icon">'+icon+'</div><h3>'+
+      name.replace(/</g,'&lt;')+'</h3><p>'+desc.replace(/</g,'&lt;')+'</p>';
+    grid.appendChild(card);
+    modal.classList.remove('open');
+    document.getElementById('newServiceName').value='';
+    document.getElementById('newServiceIcon').value='';
+    document.getElementById('newServiceDesc').value='';
+    document.getElementById('services').scrollIntoView({behavior:'smooth'});
+  });
+})();
+</script>
+
+</body>
+</html>
